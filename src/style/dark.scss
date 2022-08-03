@@ -21,6 +21,15 @@
     .search {
       border-color: gray;
     }
+
+    .dropdown {
+      background-color: #333;
+      border-color: #111;
+
+      .menuItem {
+        color: white;
+      }
+    }
   }
 
   .sidebar {
