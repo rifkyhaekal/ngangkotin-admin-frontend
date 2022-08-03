@@ -4,12 +4,20 @@
   align-items: center;
   border-radius: 8px;
   transition: background 500ms;
-  padding: 0.5rem;
+  padding: 5px;
   color: #474a4d;
   text-decoration: none;
 
+  .iconButton {
+    margin-right: 0.5rem;
+
+    &:hover {
+      filter: none;
+    }
+  }
+
   &:hover {
     color: white;
-    background-color: #525357;
+    background-color: #4eb5e5;
   }
 }

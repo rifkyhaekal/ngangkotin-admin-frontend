@@ -3,9 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 const DropdownItem = (props) => {
   return (
-    <NavLink to='/logout' className='menuItem'>
-      {props.children}
-    </NavLink>
+    <>
+      <NavLink to={props.url} className='menuItem'>
+        <span className='iconButton'>{props.icon}</span>
+        {props.children}
+      </NavLink>
+    </>
   );
 };
 

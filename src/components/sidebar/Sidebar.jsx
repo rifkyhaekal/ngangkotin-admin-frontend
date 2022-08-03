@@ -64,20 +64,6 @@ const Sidebar = () => {
             <ReceiptLongOutlinedIcon className='icon' />
             <span>Laporan</span>
           </li>
-          <p className='title'>USEFUL</p>
-          <li>
-            <SettingsIcon className='icon' />
-            <span>Pengaturan</span>
-          </li>
-          <p className='title'>USER</p>
-          <li>
-            <AccountCircleIcon className='icon' />
-            <span>Profil</span>
-          </li>
-          <li>
-            <LogoutIcon className='icon' />
-            <span>Keluar</span>
-          </li>
         </ul>
       </div>
       <div className='bottom'>
