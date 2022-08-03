@@ -1,0 +1,26 @@
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+
+    .loginLogo {
+      width: 50%;
+    }
+
+    .loginText {
+      font-weight: bold;
+    }
+
+    .loginButton {
+      margin-top: 25px;
+    }
+  }
+}

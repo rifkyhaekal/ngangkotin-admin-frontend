@@ -1,0 +1,15 @@
+.menuItem {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background 500ms;
+  padding: 0.5rem;
+  color: #474a4d;
+  text-decoration: none;
+
+  &:hover {
+    color: white;
+    background-color: #525357;
+  }
+}

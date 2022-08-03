@@ -1,0 +1,24 @@
+.navItem {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 300ms;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+}
