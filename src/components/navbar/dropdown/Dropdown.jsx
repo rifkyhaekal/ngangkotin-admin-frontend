@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import './dropdown.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
+import DropdownItem from '../dropdownitem/DropdownItem';
+import { NavLink } from 'react-router-dom';
 
 const Dropdown = () => {
   const [click, setClick] = useState(false);
@@ -17,8 +21,8 @@ const Dropdown = () => {
       title: 'Apakah anda yakin ingin logout?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#ff0000',
+      cancelButtonColor: '#443f3f',
       confirmButtonText: 'Logout',
     })
       .then((result) => {
@@ -47,18 +51,16 @@ const Dropdown = () => {
   };
   return (
     <>
-      <ul onClick={handleClick} className={click ? 'dropdownMenu clicked' : 'dropdownMenu'}>
-        <li>
-          <Link className='dropdownLink' to='/profile' onClick={() => setClick(false)}>
-            Profile
-          </Link>
-        </li>
-        <li>
-          <button className='dropdownLink' type='button' onClick={(e) => logoutSubmit(e)}>
-            Button
+      <div onClick={handleClick} className={click ? 'dropdownMenu clicked' : 'dropdownMenu'}>
+        <DropdownItem icon={<AccountCircleIcon />}>
+          <NavLink to='/users'>Profil</NavLink>
+        </DropdownItem>
+        <DropdownItem icon={<LogoutIcon />}>
+          <button type='button' className='navButton' onClick={(e) => logoutSubmit(e)}>
+            Logout
           </button>
-        </li>
-      </ul>
+        </DropdownItem>
+      </div>
     </>
   );
 };

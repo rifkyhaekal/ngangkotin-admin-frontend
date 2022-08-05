@@ -1,30 +1,35 @@
 .dropdownMenu {
-  background: red;
-  width: 200px;
+  background-color: white;
+  border: 1px solid #474a4d;
+  border-radius: 8px;
   position: absolute;
   top: 50px;
+  width: 150px;
+  transform: translateX(-35%);
   list-style: none;
-  text-align: start;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 
-  & li {
-    background: #1888ff;
-    cursor: pointer;
-
-    &:hover {
-      background: #5cabff;
-    }
-  }
-
-  .dropdownLink {
-    display: block;
-    height: 100%;
-    width: 100%;
+  a {
+    color: #474a4d;
     text-decoration: none;
-    color: #fff;
-    padding: 16px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
-  &.clicked {
-    display: none;
+  .navButton {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 }
