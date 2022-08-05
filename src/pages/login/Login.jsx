@@ -1,19 +1,13 @@
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
 import jwt_decode from 'jwt-decode';
 import './login.scss';
 import logo from './img/ngangkotin-car.png';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-  // const [adminCredentials, setAdminCredentials] = useState({
-  //   email: undefined,
-  //   fullname: undefined,
-  //   isVerified: undefined,
-  //   profileUrl: undefined,
-  // });
+  const navigate = useNavigate();
 
   const handleCallbackResponse = (response) => {
     let adminObject = jwt_decode(response.credential);
@@ -24,8 +18,6 @@ const Login = () => {
       profileUrl: adminObject.picture,
     };
 
-    console.log(adminObject);
-
     axios
       .post('auth', adminData)
       .then((res) => {
@@ -33,16 +25,21 @@ const Login = () => {
           const {
             data: { accessToken, refreshToken },
           } = res.data;
-          console.log(accessToken);
-          console.log(refreshToken);
+
           localStorage.setItem('accessToken', accessToken);
           localStorage.setItem('refreshToken', refreshToken);
 
-          swal('Login berhasil!', `Selamat datang, ${adminData.fullname}.`, 'success');
+          Swal.fire({
+            icon: 'success',
+            title: 'Login berhasil!',
+            html: `Selamat datang, <b>${adminData.fullname}</b>.`,
+            showConfirmButton: true,
+            timer: 4000,
+          });
           navigate('/');
         }
       })
-      .catch((error) => swal('Login gagal!', error.response.data.message, 'error'));
+      .catch((error) => Swal.fire('Login gagal!', error.response.data.message, 'error'));
   };
 
   useEffect(() => {
@@ -56,33 +53,6 @@ const Login = () => {
 
     google.accounts.id.prompt();
   });
-
-  // const { loading, error, dispatch } = useContext(AuthContext);
-
-  const navigate = useNavigate();
-
-  // const handleChange = (e) => {
-  //   setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  // };
-
-  // const handleClick = async (e) => {
-  //   e.preventDefault();
-  //   dispatch({ type: 'LOGIN_START' });
-  //   try {
-  //     const res = await axios.post('/auth/login', credentials);
-
-  //     if (res.data.isAdmin) {
-  //       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
-  //     } else {
-  //       dispatch({
-  //         type: 'LOGIN_FAILURE',
-  //         payload: { message: 'Kamu tidak boleh masuk!' },
-  //       });
-  //     }
-  //   } catch (err) {
-  //     dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
-  //   }
-  // };
 
   return (
     <div className='login'>

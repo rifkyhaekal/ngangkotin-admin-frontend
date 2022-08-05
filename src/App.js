@@ -8,29 +8,22 @@ import { userInputs, productInputs } from './formSource';
 import './style/dark.scss';
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
-import { AuthContext } from './context/AuthContext';
 import axios from 'axios';
+import Logout from './pages/logout/Logout';
+import AdminPrivateRoute from './AdminPrivateRoute';
 
 axios.defaults.baseURL = process.env.REACT_APP_BACKEND_BASEURL;
-axios.defaults.headers['Content-Type'] = 'application/json';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-
-  // const ProtectedRoute = ({ children }) => {
-  //   const { user } = useContext(AuthContext);
-
-  //   if (!user) {
-  //     return <Navigate to='/login' />;
-  //   }
-  // };
-
   return (
     <div className={darkMode ? 'app dark' : 'app'}>
       <BrowserRouter>
         <Routes>
           <Route path='/'>
-            <Route path='login' element={<Login />} />
+            {/* <AdminPrivateRoute path='admin' name='Admin' /> */}
+            <Route path='login' element={localStorage.getItem('accessToken') ? <Navigate to='/' /> : <Login />} />
             <Route index element={<Home />} />
             <Route path='users'>
               <Route index element={<List />} />

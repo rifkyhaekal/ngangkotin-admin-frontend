@@ -7,9 +7,6 @@ import RouteOutlinedIcon from '@mui/icons-material/RouteOutlined';
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 import NoteOutlinedIcon from '@mui/icons-material/NoteOutlined';
 import ReceiptLongOutlinedIcon from '@mui/icons-material/ReceiptLongOutlined';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
@@ -28,10 +25,12 @@ const Sidebar = () => {
       <div className='center'>
         <ul>
           <p className='title'>MAIN</p>
-          <li>
-            <DashboardIcon className='icon' />
-            <span>Dashboard</span>
-          </li>
+          <Link to='/' style={{ textDecoration: 'none' }}>
+            <li>
+              <DashboardIcon className='icon' />
+              <span>Dashboard</span>
+            </li>
+          </Link>
           <p className='title'>MANAJEMEN</p>
           <Link to='/users' style={{ textDecoration: 'none' }}>
             <li>
